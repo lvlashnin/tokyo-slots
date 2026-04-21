@@ -4,6 +4,8 @@ export const REELS_COUNT = 4;
 export const MIN_BET = 10;
 export const MAX_BET = 10000;
 export const BET_STEP = 10;
+export const SPIN_DURATION = 2000;
+export const REEL_STOP_DELAY = 500;
 
 export const SYMBOLS: SlotSymbol[] = [
   { id: "seven", icon: "7️⃣", multiplier: 50, weight: 5 },

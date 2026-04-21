@@ -45,3 +45,6 @@ export const generateReelsSpin = (
 ): SlotSymbol[] => {
   return Array.from({ length: reelsCount }, () => getRandomSymbol(symbols));
 };
+
+export const delay = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
