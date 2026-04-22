@@ -31,7 +31,7 @@
 .spin-layer {
   z-index: 20;
   height: auto;
-  bottom: 80px; 
+  bottom: 160px; 
   display: flex;
   justify-content: center;
   pointer-events: auto;
@@ -39,7 +39,7 @@
 
 .clouds-layer {
   z-index: 30;
-  height: 272px;   
+  height: 250px;   
   pointer-events: none; 
   background-image: url('../../assets/clouds.svg');
   background-size: cover;

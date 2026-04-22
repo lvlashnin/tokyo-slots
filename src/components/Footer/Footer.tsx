@@ -1,6 +1,6 @@
 import React from "react";
 // import classNames from "classnames";
-// import { SpinButton } from "../SpinButton/SpinButton";
+import { SpinButton } from "../SpinButton/SpinButton";
 import { BalanceBoard } from "../BalanceBoard/BalanceBoard";
 import "./Footer.css";
 
@@ -9,7 +9,9 @@ export const Footer: React.FC = () => {
     <footer className="game-footer">
       <div className="footer-layer city-layer"></div>
 
-      <div className="footer-layer spin-layer">{/* <SpinButton /> */}</div>
+      <div className="footer-layer spin-layer">
+        <SpinButton />
+      </div>
 
       <div className="footer-layer clouds-layer"></div>
 

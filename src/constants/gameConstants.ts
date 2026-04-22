@@ -6,6 +6,9 @@ export const MAX_BET = 10000;
 export const BET_STEP = 10;
 export const SPIN_DURATION = 2000;
 export const REEL_STOP_DELAY = 500;
+export const PRESS_DEPTH = 16;
+export const PRESS_SCALE_Y = 0.82;
+export const PRESS_SCALE_X = 1.03;
 
 export const SYMBOLS: SlotSymbol[] = [
   { id: "seven", icon: "7️⃣", multiplier: 50, weight: 5 },
