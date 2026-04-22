@@ -10,6 +10,7 @@ import { Header } from "./components/Header/Header";
 // import { BackgroundDecorations } from "./components/BackgroundDecorations/BackgroundDecorations";
 // import { ResultPopup } from "./components/ResultPopup/ResultPopup";
 import "./App.css";
+import { Footer } from "./components/Footer/Footer";
 
 export const App: React.FC = () => {
   const { status } = useGameStore(
@@ -30,14 +31,11 @@ export const App: React.FC = () => {
 
       <div className="game-content">
         <Header />
-
         {/* <main className="main-area">
-          <SlotMachine />
-          <BetControls />
-          <SpinButton />
-        </main> */}
-
-        {/* <BalanceBoard /> */}
+        <SlotMachine />
+        <BetControls />
+      </main> */}
+        <Footer />
       </div>
 
       {/* {(status === "win" || status === "lose") && (

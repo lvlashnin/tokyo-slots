@@ -1,0 +1,52 @@
+.game-footer {
+  position: relative;
+  width: 100%;
+  height: 320px; 
+  margin-top: auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.footer-layer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: bottom center;
+  background-repeat: repeat-x;
+  background-size: contain;
+}
+
+.city-layer {
+  top: 10px;
+  z-index: 10;
+  height: 160px;
+  opacity: 0.8;     
+  background-image: url('../../assets/city-footer.svg');
+  background-size: auto;
+}
+
+.spin-layer {
+  z-index: 20;
+  height: auto;
+  bottom: 80px; 
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.clouds-layer {
+  z-index: 30;
+  height: 272px;   
+  pointer-events: none; 
+  background-image: url('../../assets/clouds.svg');
+  background-size: cover;
+}
+
+.balance-layer {
+  z-index: 40;
+  position: relative;   
+  pointer-events: auto;
+}

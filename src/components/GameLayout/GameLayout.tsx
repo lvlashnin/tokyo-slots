@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "../../store/useGameStore";
-import { BackgroundDecorations } from "../BackgroundDecorations/BackgroundDecorations";
+// import { BackgroundDecorations } from "../BackgroundDecorations/BackgroundDecorations";
 import "./GameLayout.css";
 
 interface GameLayoutProps {
@@ -20,7 +20,7 @@ export const GameLayout: React.FC<GameLayoutProps> = ({ children }) => {
 
   return (
     <div className={layoutClass}>
-      <BackgroundDecorations status={status} />
+      {/* <BackgroundDecorations status={status} /> */}
 
       <main className="game-content">{children}</main>
     </div>
