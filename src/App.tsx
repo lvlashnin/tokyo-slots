@@ -3,19 +3,13 @@ import classNames from "classnames";
 import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "./store/useGameStore";
 import { Header } from "./components/Header/Header";
-import { SlotMachine } from "./components/SlotMachine/SlotMachine";
-import { BetControls } from "./components/BetControls/BetControls";
-import { SpinButton } from "./components/SpinButton/SpinButton";
-import { BalanceBoard } from "./components/BalanceBoard/BalanceBoard";
-import { BackgroundDecorations } from "./components/BackgroundDecorations/BackgroundDecorations";
-import { ResultPopup } from "./components/ResultPopup/ResultPopup";
+// import { SlotMachine } from "./components/SlotMachine/SlotMachine";
+// import { BetControls } from "./components/BetControls/BetControls";
+// import { SpinButton } from "./components/SpinButton/SpinButton";
+// import { BalanceBoard } from "./components/BalanceBoard/BalanceBoard";
+// import { BackgroundDecorations } from "./components/BackgroundDecorations/BackgroundDecorations";
+// import { ResultPopup } from "./components/ResultPopup/ResultPopup";
 import "./App.css";
-
-const ResultPopup = ({ status }: { status: "win" | "lose" }) => (
-  <div className="popup-overlay">
-    <div>[Popup: {status === "win" ? "YOU WIN!!!" : "YOU LOSE"}]</div>
-  </div>
-);
 
 export const App: React.FC = () => {
   const { status } = useGameStore(
@@ -32,23 +26,23 @@ export const App: React.FC = () => {
 
   return (
     <div className={classNames("app-container", backgroundClass)}>
-      <BackgroundDecorations />
+      {/* <BackgroundDecorations /> */}
 
       <div className="game-content">
         <Header />
 
-        <main className="main-area">
+        {/* <main className="main-area">
           <SlotMachine />
           <BetControls />
           <SpinButton />
-        </main>
+        </main> */}
 
-        <BalanceBoard />
+        {/* <BalanceBoard /> */}
       </div>
 
-      {(status === "win" || status === "lose") && (
+      {/* {(status === "win" || status === "lose") && (
         <ResultPopup status={status} />
-      )}
+      )} */}
     </div>
   );
 };
