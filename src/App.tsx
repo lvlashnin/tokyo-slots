@@ -4,9 +4,7 @@ import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "./store/useGameStore";
 import { Header } from "./components/Header/Header";
 // import { SlotMachine } from "./components/SlotMachine/SlotMachine";
-// import { BetControls } from "./components/BetControls/BetControls";
-// import { SpinButton } from "./components/SpinButton/SpinButton";
-// import { BalanceBoard } from "./components/BalanceBoard/BalanceBoard";
+import { BetControls } from "./components/BetControls/BetControls";
 // import { BackgroundDecorations } from "./components/BackgroundDecorations/BackgroundDecorations";
 // import { ResultPopup } from "./components/ResultPopup/ResultPopup";
 import "./App.css";
@@ -31,10 +29,10 @@ export const App: React.FC = () => {
 
       <div className="game-content">
         <Header />
-        {/* <main className="main-area">
-        <SlotMachine />
-        <BetControls />
-      </main> */}
+        <main className="main-area">
+          {/* <SlotMachine /> */}
+          <BetControls />
+        </main>
         <Footer />
       </div>
 

@@ -69,6 +69,8 @@ export const useGameStore = create<GameStore>((set, get) => ({
         currentWinAmount: betAmount,
       });
     }
+    await delay(SPIN_DURATION);
+    set({ status: "idle" });
   },
   toggleMute: () => {},
   stopReel: (reelIndex) => {},

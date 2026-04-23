@@ -20,7 +20,7 @@
 
 .spin-top {
   position: absolute;
-  top: 1px;
+  top: 2px;
   width: 150px; 
   height: 90px;
   background-image: url('../../assets/spin-top.svg');
