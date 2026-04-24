@@ -73,7 +73,4 @@ export const useGameStore = create<GameStore>((set, get) => ({
     set({ status: "idle" });
   },
   toggleMute: () => {},
-  stopReel: (reelIndex) => {},
-
-  calculateResult: () => {},
 }));
