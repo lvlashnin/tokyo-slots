@@ -43,7 +43,7 @@ export const useBetLogic = () => {
     setIsEditing(false);
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") handleSave();
     if (e.key === "Escape") handleCancel();
   };

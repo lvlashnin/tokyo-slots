@@ -14,6 +14,7 @@ export interface GameState {
   reels: SlotSymbol[];
   currentWinAmount: number;
   isMuted: boolean;
+  isMusicPlaying: boolean;
 }
 
 export interface GameActions {

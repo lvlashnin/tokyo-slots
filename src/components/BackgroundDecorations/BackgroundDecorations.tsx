@@ -10,9 +10,9 @@ export const BackgroundDecorations: React.FC = () => {
 
   useGSAP(
     () => {
-      const symbols = gsap.utils.toArray(".floating-symbol");
+      const symbols = gsap.utils.toArray(".floating-symbol") as HTMLElement[];
 
-      symbols.forEach((target: HTMLElement) => {
+      symbols.forEach((target) => {
         gsap.to(target, {
           x: `+=${gsap.utils.random(-150, 150)}`,
           y: `+=${gsap.utils.random(-150, 150)}`,
