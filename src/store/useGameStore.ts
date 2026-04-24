@@ -6,6 +6,7 @@ import {
   REEL_STOP_DELAY,
 } from "../constants/gameConstants";
 import { generateReelsSpin, calculateWin, delay } from "../utils/gameHelpers";
+import { setMuteState, playSound } from "../utils/soundManager";
 
 const initialState: GameState = {
   balance: 999999.99,
@@ -13,7 +14,8 @@ const initialState: GameState = {
   status: "idle",
   reels: Array(4).fill(SYMBOLS[0]),
   currentWinAmount: 0,
-  isMuted: true,
+  isMuted: false,
+  isMusicPlaying: false,
 };
 
 export const useGameStore = create<GameStore>((set, get) => ({
@@ -21,8 +23,14 @@ export const useGameStore = create<GameStore>((set, get) => ({
 
   setBetAmount: (amount) => set({ betAmount: amount }),
   setGameStatus: (status: GameStatus) => set({ status }),
+  playMainMusic: () => {
+    const { isMuted, isMusicPlaying } = get();
+    if (!isMuted && !isMusicPlaying) playSound("main");
+    set({ isMusicPlaying: true });
+  },
 
   incrementBet: (step, max) => {
+    playSound("ui_click");
     const { betAmount } = get();
     if (betAmount + step <= max) {
       set({ betAmount: betAmount + step });
@@ -30,6 +38,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
 
   decrementBet: (step, min) => {
+    playSound("ui_click");
     const { betAmount } = get();
     if (betAmount - step >= min) {
       set({ betAmount: betAmount - step });
@@ -37,6 +46,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
 
   spinReels: async () => {
+    playSound("lever_pull");
     const { balance, betAmount, status } = get();
 
     if (status === "spinning" || betAmount > balance) return;
@@ -47,6 +57,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
       currentWinAmount: 0,
     });
 
+    playSound("reels_spin");
     const newReelsSet = generateReelsSpin(SYMBOLS);
 
     set({ reels: newReelsSet });
@@ -54,16 +65,19 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const totalSpinTime = SPIN_DURATION + REEL_STOP_DELAY * 3;
 
     await delay(totalSpinTime);
+    playSound("reel_stop");
 
     const winAmount = calculateWin(newReelsSet, betAmount);
 
     if (winAmount > 0) {
+      playSound("win_simple");
       set((state) => ({
         balance: state.balance + winAmount,
         status: "win",
         currentWinAmount: winAmount,
       }));
     } else {
+      playSound("lose");
       set({
         status: "lose",
         currentWinAmount: betAmount,
@@ -72,5 +86,10 @@ export const useGameStore = create<GameStore>((set, get) => ({
     await delay(SPIN_DURATION);
     set({ status: "idle" });
   },
-  toggleMute: () => {},
+  toggleMute: () => {
+    const newMutedState = !get().isMuted;
+
+    set({ isMuted: newMutedState });
+    setMuteState(newMutedState);
+  },
 }));

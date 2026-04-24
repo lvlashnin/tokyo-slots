@@ -23,6 +23,7 @@ export interface GameActions {
   setGameStatus: (status: GameStatus) => void;
   toggleMute: () => void;
   spinReels: () => Promise<void>;
+  playMainMusic: () => void;
 }
 
 export type GameStore = GameState & GameActions;

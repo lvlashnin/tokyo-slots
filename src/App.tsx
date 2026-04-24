@@ -1,7 +1,5 @@
 import React from "react";
 import classNames from "classnames";
-// import { useShallow } from "zustand/react/shallow";
-// import { useGameStore } from "./store/useGameStore";
 import { Header } from "./components/Header/Header";
 import { SlotMachine } from "./components/SlotMachine/SlotMachine";
 import { BetControls } from "./components/BetControls/BetControls";
@@ -9,10 +7,12 @@ import { BackgroundDecorations } from "./components/BackgroundDecorations/Backgr
 import { ResultPopup } from "./components/ResultPopup/ResultPopup";
 import "./App.css";
 import { Footer } from "./components/Footer/Footer";
+import { useGameStore } from "./store/useGameStore";
 
 export const App: React.FC = () => {
+  const startMusic = useGameStore((state) => state.playMainMusic);
   return (
-    <div className={classNames("app-container")}>
+    <div className={classNames("app-container")} onClick={startMusic}>
       <BackgroundDecorations />
 
       <div className="game-content">
