@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "./store/useGameStore";
 import { Header } from "./components/Header/Header";
-// import { SlotMachine } from "./components/SlotMachine/SlotMachine";
+import { SlotMachine } from "./components/SlotMachine/SlotMachine";
 import { BetControls } from "./components/BetControls/BetControls";
 // import { BackgroundDecorations } from "./components/BackgroundDecorations/BackgroundDecorations";
 // import { ResultPopup } from "./components/ResultPopup/ResultPopup";
@@ -30,7 +30,7 @@ export const App: React.FC = () => {
       <div className="game-content">
         <Header />
         <main className="main-area">
-          {/* <SlotMachine /> */}
+          <SlotMachine />
           <BetControls />
         </main>
         <Footer />
