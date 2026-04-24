@@ -8,18 +8,7 @@
   display: flex;
   flex-direction: column;
   transition: background 0.5s ease; 
-}
-
-.bg-idle {
   background-color: #d4e8a0; 
-}
-
-.bg-win {
-  background-color: #a8e6f0; 
-}
-
-.bg-lose {
-  background-color: #e8b88a;
 }
 
 .game-content {

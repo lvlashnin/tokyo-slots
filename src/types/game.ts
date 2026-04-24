@@ -20,9 +20,7 @@ export interface GameActions {
   setBetAmount: (amount: number) => void;
   incrementBet: (step: number, max: number) => void;
   decrementBet: (step: number, min: number) => void;
-  //   stopReel: (reelIndex: number) => void;
   setGameStatus: (status: GameStatus) => void;
-  //   calculateResult: () => void;
   toggleMute: () => void;
   spinReels: () => Promise<void>;
 }
