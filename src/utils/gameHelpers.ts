@@ -4,7 +4,7 @@ export const getRandomSymbol = (symbols: SlotSymbol[]): SlotSymbol => {
   let currentSum = 0;
 
   const totalWeight = symbols.reduce((sum, symbol) => sum + symbol.weight, 0);
-  const randomNum = Math.round(Math.random()) * totalWeight;
+  const randomNum = Math.round(Math.random() * totalWeight);
 
   for (const symbol of symbols) {
     currentSum += symbol.weight;
