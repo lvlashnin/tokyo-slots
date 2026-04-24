@@ -1,3 +1,16 @@
+.slot-machine-scaler {  
+  --base-width: 360px;  
+  width: var(--base-width);
+  height: 220px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  scale: min(1, calc(100vw / var(--base-width)));   
+  transform-origin: center center;  
+  margin: 0 auto;
+}
+
 .slot-machine-wrapper {
   position: relative;
   width: 360px; 

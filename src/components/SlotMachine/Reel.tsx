@@ -57,7 +57,12 @@ export const Reel: React.FC<ReelProps> = ({
       <div className="reel-tape" ref={tapeRef}>
         {tapeSymbols.map((symbol, i) => (
           <div key={`${i}-${symbol.id}`} className="reel-symbol">
-            {symbol.icon}
+            <img
+              src={symbol.icon}
+              alt={symbol.id}
+              className="symbol-image"
+              draggable="false"
+            />
           </div>
         ))}
       </div>

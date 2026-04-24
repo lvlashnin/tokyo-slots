@@ -65,30 +65,29 @@ export const SlotMachine: React.FC = () => {
   }, [isSpinning]);
 
   return (
-    <div className="slot-machine-wrapper" ref={machineRef}>
-      <div className="reels-container">
-        {reels.map((targetSymbol, index) => (
-          <Reel
-            key={index}
-            index={index}
-            targetSymbol={targetSymbol}
-            isSpinning={isSpinning}
-          />
-        ))}
-      </div>
-
-      <div className="slot-body-layer">
-        <div className="eye left-eye">
-          <div className="pupil"></div>
+    <div className="slot-machine-scaler">
+      <div className="slot-machine-wrapper" ref={machineRef}>
+        <div className="reels-container">
+          {reels.map((targetSymbol, index) => (
+            <Reel
+              key={index}
+              index={index}
+              targetSymbol={targetSymbol}
+              isSpinning={isSpinning}
+            />
+          ))}
         </div>
-        <div className="eye right-eye">
-          <div className="pupil"></div>
+        <div className="slot-body-layer">
+          <div className="eye left-eye">
+            <div className="pupil"></div>
+          </div>
+          <div className="eye right-eye">
+            <div className="pupil"></div>
+          </div>
+          <div className="arm left-arm" ref={leftArmRef}></div>
+          <div className="arm right-arm" ref={rightArmRef}></div>
+          <div className="lever-handle" ref={leverRef}></div>
         </div>
-
-        <div className="arm left-arm" ref={leftArmRef}></div>
-        <div className="arm right-arm" ref={rightArmRef}></div>
-
-        <div className="lever-handle" ref={leverRef}></div>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@
   z-index: 10;
   display: flex;
   justify-content: center;
+  margin-bottom: 35px;
 }
 
 .header-wrapper::after {

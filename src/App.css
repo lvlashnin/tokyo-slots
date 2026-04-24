@@ -39,6 +39,7 @@
   width: 100%;
   flex-grow: 1;
   justify-content: center;
+  container-type: inline-size;
 }
 
 .popup-overlay {
