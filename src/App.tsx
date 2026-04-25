@@ -10,6 +10,8 @@ import { Footer } from "./components/Footer/Footer";
 import { useAudioInit } from "./hooks/useAudioInit";
 import { useGameStore } from "./store/useGameStore";
 import { useShallow } from "zustand/shallow";
+import soundOnIcon from "./assets/toggleSound/sound-on.svg";
+import soundOffIcon from "./assets/toggleSound/sound-off.svg";
 
 export const App: React.FC = () => {
   const { toggleMute, isMuted } = useGameStore(
@@ -25,11 +27,7 @@ export const App: React.FC = () => {
     <div className={classNames("app-container")}>
       <button className="mute-button" onClick={toggleMute}>
         <img
-          src={
-            isMuted
-              ? "src/assets/toggleSound/sound-off.svg"
-              : "src/assets/toggleSound/sound-on.svg"
-          }
+          src={isMuted ? soundOffIcon : soundOnIcon}
           alt={isMuted ? "Sound Off" : "Sound On"}
         />
       </button>
