@@ -14,6 +14,7 @@ export interface GameState {
   reels: SlotSymbol[];
   currentWinAmount: number;
   isMuted: boolean;
+  isAudioInitialized: boolean;
 }
 
 export interface GameActions {
@@ -22,6 +23,7 @@ export interface GameActions {
   decrementBet: (step: number, min: number) => void;
   setGameStatus: (status: GameStatus) => void;
   toggleMute: () => void;
+  initAudio: () => void;
   spinReels: () => Promise<void>;
 }
 

@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;  
-  /* scale: min(1, calc(100vw / var(--base-width)));    */
+  scale: min(1, calc(100vw / var(--base-width)));   
   transform-origin: center center;  
   margin: 0 auto;
   
