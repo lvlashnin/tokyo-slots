@@ -6,11 +6,15 @@ export const useAudioInit = () => {
 
   useEffect(() => {
     const handleInteraction = () => {
-      initAudio();
-
-      window.removeEventListener("click", handleInteraction);
-      window.removeEventListener("keydown", handleInteraction);
-      window.removeEventListener("touchstart", handleInteraction);
+      try {
+        initAudio();
+      } catch (error) {
+        console.error("Ошибка при инициализации аудио:", error);
+      } finally {
+        window.removeEventListener("click", handleInteraction);
+        window.removeEventListener("keydown", handleInteraction);
+        window.removeEventListener("touchstart", handleInteraction);
+      }
     };
 
     window.addEventListener("click", handleInteraction);

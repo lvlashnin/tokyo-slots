@@ -1,4 +1,5 @@
 export type GameStatus = "idle" | "spinning" | "win" | "lose";
+export type IconSource = string;
 
 export interface SlotSymbol {
   id: string;
