@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  overflow: hidden;
 }
 
 .footer-layer {
@@ -16,7 +17,7 @@
   bottom: 0;
   background-position: bottom center;
   background-repeat: repeat-x;
-  background-size: contain;
+  background-size: auto 100%;
 }
 
 .city-layer {
@@ -35,19 +36,21 @@
   display: flex;
   justify-content: center;
   pointer-events: auto;
+  background-image: none;
 }
 
 .clouds-layer {
   z-index: 30;
-  height: 230px;   
-  top: 80px;
+  height: 150px;
   pointer-events: none; 
-  background-image: url('../../assets/clouds.svg');
-  background-size: cover;
+  background-image: url('../../assets/clouds.svg');  
 }
 
 .balance-layer {
+  position: relative;
   z-index: 40;
+  flex-shrink: 0;
   position: relative;   
   pointer-events: auto;
+  background-image:none;
 }

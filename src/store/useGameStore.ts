@@ -7,6 +7,7 @@ import {
 } from "../constants/gameConstants";
 import { generateReelsSpin, calculateWin, delay } from "../utils/gameHelpers";
 import { setMuteState, playSound } from "../utils/soundManager";
+import { persist } from "zustand/middleware";
 
 const initialState: GameState = {
   balance: 999999.99,
@@ -15,81 +16,97 @@ const initialState: GameState = {
   reels: Array(4).fill(SYMBOLS[0]),
   currentWinAmount: 0,
   isMuted: false,
-  isMusicPlaying: false,
+  isAudioInitialized: false,
 };
 
-export const useGameStore = create<GameStore>((set, get) => ({
-  ...initialState,
+export const useGameStore = create<GameStore>()(
+  persist(
+    (set, get) => ({
+      ...initialState,
 
-  setBetAmount: (amount) => set({ betAmount: amount }),
-  setGameStatus: (status: GameStatus) => set({ status }),
-  playMainMusic: () => {
-    const { isMuted, isMusicPlaying } = get();
-    if (!isMuted && !isMusicPlaying) playSound("main");
-    set({ isMusicPlaying: true });
-  },
+      setBetAmount: (amount) => set({ betAmount: amount }),
+      setGameStatus: (status: GameStatus) => set({ status }),
 
-  incrementBet: (step, max) => {
-    playSound("ui_click");
-    const { betAmount } = get();
-    if (betAmount + step <= max) {
-      set({ betAmount: betAmount + step });
-    }
-  },
+      incrementBet: (step, max) => {
+        playSound("ui_click");
+        const { betAmount } = get();
+        if (betAmount + step <= max) {
+          set({ betAmount: betAmount + step });
+        }
+      },
 
-  decrementBet: (step, min) => {
-    playSound("ui_click");
-    const { betAmount } = get();
-    if (betAmount - step >= min) {
-      set({ betAmount: betAmount - step });
-    }
-  },
+      decrementBet: (step, min) => {
+        playSound("ui_click");
+        const { betAmount } = get();
+        if (betAmount - step >= min) {
+          set({ betAmount: betAmount - step });
+        }
+      },
 
-  spinReels: async () => {
-    playSound("lever_pull");
-    const { balance, betAmount, status } = get();
+      spinReels: async () => {
+        playSound("lever_pull");
+        const { balance, betAmount, status } = get();
 
-    if (status === "spinning" || betAmount > balance) return;
+        if (status === "spinning" || betAmount > balance) return;
 
-    set({
-      balance: balance - betAmount,
-      status: "spinning",
-      currentWinAmount: 0,
-    });
+        set({
+          balance: balance - betAmount,
+          status: "spinning",
+          currentWinAmount: 0,
+        });
 
-    playSound("reels_spin");
-    const newReelsSet = generateReelsSpin(SYMBOLS);
+        playSound("reels_spin");
+        const newReelsSet = generateReelsSpin(SYMBOLS);
 
-    set({ reels: newReelsSet });
+        set({ reels: newReelsSet });
 
-    const totalSpinTime = SPIN_DURATION + REEL_STOP_DELAY * 3;
+        const totalSpinTime = SPIN_DURATION + REEL_STOP_DELAY * 3;
 
-    await delay(totalSpinTime);
-    playSound("reel_stop");
+        await delay(totalSpinTime);
+        playSound("reel_stop");
 
-    const winAmount = calculateWin(newReelsSet, betAmount);
+        const winAmount = calculateWin(newReelsSet, betAmount);
 
-    if (winAmount > 0) {
-      playSound("win_simple");
-      set((state) => ({
-        balance: state.balance + winAmount,
-        status: "win",
-        currentWinAmount: winAmount,
-      }));
-    } else {
-      playSound("lose");
-      set({
-        status: "lose",
-        currentWinAmount: betAmount,
-      });
-    }
-    await delay(SPIN_DURATION);
-    set({ status: "idle" });
-  },
-  toggleMute: () => {
-    const newMutedState = !get().isMuted;
+        if (winAmount > 0) {
+          playSound("win_simple");
+          set((state) => ({
+            balance: state.balance + winAmount,
+            status: "win",
+            currentWinAmount: winAmount,
+          }));
+        } else {
+          playSound("lose");
+          set({
+            status: "lose",
+            currentWinAmount: betAmount,
+          });
+        }
+        await delay(SPIN_DURATION);
+        set({ status: "idle" });
+      },
+      toggleMute: () => {
+        const newMutedState = !get().isMuted;
+        set({ isMuted: newMutedState });
 
-    set({ isMuted: newMutedState });
-    setMuteState(newMutedState);
-  },
-}));
+        setMuteState(newMutedState);
+      },
+      initAudio: () => {
+        const { isAudioInitialized, isMuted } = get();
+
+        if (isAudioInitialized) return;
+
+        set({ isAudioInitialized: true });
+
+        setMuteState(isMuted);
+      },
+    }),
+    {
+      name: "tokyo-slots-storage",
+      partialize: (state) => ({
+        balance: state.balance,
+        isMuted: state.isMuted,
+        betAmount: state.betAmount,
+      }),
+    },
+  ),
+);

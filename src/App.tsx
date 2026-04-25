@@ -7,12 +7,32 @@ import { BackgroundDecorations } from "./components/BackgroundDecorations/Backgr
 import { ResultPopup } from "./components/ResultPopup/ResultPopup";
 import "./App.css";
 import { Footer } from "./components/Footer/Footer";
+import { useAudioInit } from "./hooks/useAudioInit";
 import { useGameStore } from "./store/useGameStore";
+import { useShallow } from "zustand/shallow";
 
 export const App: React.FC = () => {
-  const startMusic = useGameStore((state) => state.playMainMusic);
+  const { toggleMute, isMuted } = useGameStore(
+    useShallow((state) => ({
+      isMuted: state.isMuted,
+      toggleMute: state.toggleMute,
+    })),
+  );
+
+  useAudioInit();
+
   return (
-    <div className={classNames("app-container")} onClick={startMusic}>
+    <div className={classNames("app-container")}>
+      <button className="mute-button" onClick={toggleMute}>
+        <img
+          src={
+            isMuted
+              ? "src/assets/toggleSound/sound-off.svg"
+              : "src/assets/toggleSound/sound-on.svg"
+          }
+          alt={isMuted ? "Sound Off" : "Sound On"}
+        />
+      </button>
       <BackgroundDecorations />
 
       <div className="game-content">

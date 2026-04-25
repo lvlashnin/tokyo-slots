@@ -42,10 +42,19 @@ sounds.error.volume = 0.2;
 
 export const setMuteState = (muted: boolean) => {
   isMuted = muted;
+  if (isMuted) {
+    sounds.main.pause();
+  } else {
+    playBgMusic();
+  }
 };
 
 export const playSound = (name: keyof typeof sounds) => {
   if (isMuted) return;
+
+  if (name === "main") {
+    return;
+  }
 
   const sound = sounds[name];
   if (!sound) return;
@@ -56,4 +65,20 @@ export const playSound = (name: keyof typeof sounds) => {
   clone.play().catch((err) => {
     console.warn(`${name} sound blocked, need to click somewhere`, err);
   });
+};
+
+export const playBgMusic = () => {
+  if (isMuted) return;
+
+  const bgMusic = sounds.main;
+
+  if (bgMusic.paused) {
+    bgMusic.play().catch((err) => {
+      console.warn(`music blocked, need to click somewhere`, err);
+    });
+  }
+};
+
+export const stopBgMusic = () => {
+  sounds.main.pause();
 };

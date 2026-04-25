@@ -14,7 +14,6 @@ export interface GameState {
   reels: SlotSymbol[];
   currentWinAmount: number;
   isMuted: boolean;
-  isMusicPlaying: boolean;
 }
 
 export interface GameActions {
@@ -24,7 +23,6 @@ export interface GameActions {
   setGameStatus: (status: GameStatus) => void;
   toggleMute: () => void;
   spinReels: () => Promise<void>;
-  playMainMusic: () => void;
 }
 
 export type GameStore = GameState & GameActions;
