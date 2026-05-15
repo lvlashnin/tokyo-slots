@@ -22,7 +22,7 @@ export const Reel: React.FC<ReelProps> = ({
   return (
     <div className="reel-window">
       <div className="reel-tape" ref={tapeRef}>
-        {tapeSymbols.map((symbol, i) => (
+        {tapeSymbols.map((symbol) => (
           <div key={symbol.uid} className="reel-symbol">
             <img
               src={symbol.icon}
