@@ -1,0 +1,132 @@
+.slot-machine-scaler {  
+  --base-width: 360px;  
+  width: var(--base-width);
+  height: 220px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  scale: min(1, calc(100vw / var(--base-width)));   
+  transform-origin: center center;  
+  margin: 0 auto;
+  
+}
+
+.slot-machine-wrapper {
+  position: relative;
+  width: 360px; 
+  height: 220px;
+  margin: 0 auto;
+  z-index: 10;
+  
+}
+
+.slot-body-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/slot-body.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 5; 
+  pointer-events: none; 
+  perspective: 1000px;
+}
+
+.reels-container {
+  position: absolute;
+  top: 45px;    
+  left: 25px;   
+  right: 60px;  
+  height: 120px; 
+  
+  display: flex;
+  justify-content: space-between;
+  z-index: 2; 
+}
+
+.reel-window {
+  width: 60px;
+  height: 100%;
+  overflow: hidden; 
+  background-color: #ffffff; 
+  border-radius: 8px; 
+}
+
+.reel-tape {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.reel-symbol {
+  width: 100%;
+  height: 120px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.eye {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-eye {
+  top: 20px;
+  left: 60px;
+}
+
+.right-eye {
+  top: 20px;
+  right: 105px;
+}
+
+.pupil {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../assets/pupil.svg'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arm {
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;  
+  transform-origin: top center; 
+}
+
+.left-arm {
+  bottom: -20px;
+  left: 10px;
+  background-image: url('../../assets/arm-left.svg');
+}
+
+.right-arm {
+  bottom: -20px;
+  right: 40px;
+  background-image: url('../../assets/arm-right.svg');
+}
+
+.lever-handle {
+  position: absolute;
+  width: 40px;
+  height: 120px;
+  bottom: 100px;
+  right: -10px;
+  cursor: pointer;
+  transform-origin: bottom center;
+  z-index: 1000;
+  background-image: url('../../assets/lever-handle.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform-style: preserve-3d;
+}

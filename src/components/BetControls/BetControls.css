@@ -1,0 +1,117 @@
+.bet-controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.bet-title {
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 12px;
+  color: #aae0ff;
+  margin: 0 0 8px 0;
+  letter-spacing: 1px;  
+  -webkit-text-stroke: 3px #3d2c1e;
+  paint-order: stroke fill;
+  text-shadow: 0px 3px 0px rgba(0,0,0,0.2);
+}
+
+.bet-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 16px; 
+}
+
+.bet-action-btn {
+  width: 54px;
+  height: 54px;
+  background-color: #ffffff;
+  border: 3px solid #3d2c1e; 
+  border-radius: 16px;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  outline: none;
+  padding: 0;  
+ 
+}
+
+.bet-action-btn:disabled {
+  filter: grayscale(100%);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.bet-action-text {
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 42px;
+  color: #3d2c1e;
+  line-height: 1;  
+  margin-top: -6px; 
+}
+
+
+.bet-plate {
+  position: relative;
+  width: 180px; 
+  height: 54px; 
+  background-image: url('../../assets/bet-plate.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bet-plate::before {
+  content: '';
+  position: absolute;
+  left: 15%;
+  top: 56%;
+  transform: translateY(-50%); 
+  width: 20px;  
+  height: 20px;  
+  background-image: url('../../assets/t-coin.svg'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.bet-amount {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 20px;
+  color: #ffffff;    
+  transform: translateY(2px);
+}
+
+.bet-input {
+  width: 80%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  text-align: center;  
+  appearance: textfield;
+}
+
+.bet-input::-webkit-outer-spin-button,
+.bet-input::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.bet-plate {
+  cursor: pointer; 
+  transition: transform 0.1s ease;
+}
+
+.bet-plate:hover:not(:has(input)) {
+  transform: scale(1.02);
+}

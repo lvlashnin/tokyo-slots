@@ -1,0 +1,88 @@
+.result-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+
+.overlay-win {
+  background-color: rgba(135, 206, 235, 0.6); 
+}
+
+.overlay-lose {
+  background-color: rgba(255, 60, 60, 0.6); 
+}
+
+.rays-background {
+  position: absolute;  
+  width: 150vmax;
+  height: 150vmax;
+  background-image: url('../../assets/rays.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: spinRays 15s linear infinite;  
+  opacity: 0.5; 
+  pointer-events: none;
+}
+
+@keyframes spinRays {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.result-plate-container {
+  position: relative;
+  z-index: 10;
+}
+
+.result-plate {
+  width: 320px;
+  height: 180px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  
+}
+
+.plate-win-bg {
+  background-image: url('../../assets/plate-win.svg');
+}
+
+.plate-lose-bg {
+  background-image: url('../../assets/plate-lose.svg');
+}
+
+
+.result-amount {    
+  position: relative;
+  top: 20px;
+  font-family: 'Poetsen One', sans-serif;
+  font-size: 32px;
+  color: #1B0D38;
+  padding-left: 28px; 
+  -webkit-text-stroke: 1px rgba(81, 82, 26, 0.2); 
+  paint-order: stroke fill; 
+}
+
+.result-amount-lose{
+   color:#FF0000;    
+}
+
+.result-plus {
+  margin-right: 6px;
+  font-size: 32px;
+}
+
+.result-integer {
+  font-weight: normal;
+}
+
+
