@@ -9,10 +9,12 @@ export const getRandomSymbol = (symbols: SlotSymbol[]): SlotSymbol => {
   for (const symbol of symbols) {
     currentSum += symbol.weight;
 
-    if (randomNum <= currentSum) return symbol;
+    if (randomNum <= currentSum) {
+      return { ...symbol, uid: crypto.randomUUID() };
+    }
   }
 
-  return symbols[symbols.length - 1];
+  return { ...symbols[symbols.length - 1], uid: crypto.randomUUID() };
 };
 
 export const calculateWin = (

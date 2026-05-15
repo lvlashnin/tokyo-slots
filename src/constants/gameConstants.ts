@@ -11,6 +11,13 @@ export const REELS_COUNT = 4;
 export const MIN_BET = 10;
 export const MAX_BET = 10000;
 export const BET_STEP = 10;
+
+export const GAME_STATUS = {
+  IDLE: "idle",
+  SPINNING: "spinning",
+  WIN: "win",
+  LOSE: "lose",
+} as const;
 export const SPIN_DURATION = 2000;
 export const REEL_STOP_DELAY = 500;
 export const PRESS_DEPTH = 16;

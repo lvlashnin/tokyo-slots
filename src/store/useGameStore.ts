@@ -13,7 +13,7 @@ const initialState: GameState = {
   balance: 999999.99,
   betAmount: 100,
   status: "idle",
-  reels: Array(4).fill(SYMBOLS[0]),
+  reels: generateReelsSpin(SYMBOLS),
   currentWinAmount: 0,
   isMuted: false,
   isAudioInitialized: false,
@@ -63,6 +63,7 @@ export const useGameStore = create<GameStore>()(
         const totalSpinTime = SPIN_DURATION + REEL_STOP_DELAY * 3;
 
         await delay(totalSpinTime);
+
         playSound("reel_stop");
 
         const winAmount = calculateWin(newReelsSet, betAmount);

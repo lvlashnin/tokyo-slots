@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "../../store/useGameStore";
+import { GAME_STATUS } from "../../constants/gameConstants";
 import "./ResultPopup.css";
 
 export const ResultPopup: React.FC = () => {
@@ -12,8 +13,8 @@ export const ResultPopup: React.FC = () => {
     })),
   );
 
-  const isVisible = status === "win" || status === "lose";
-  const isWin = status === "win";
+  const isVisible = status === GAME_STATUS.WIN || status === GAME_STATUS.LOSE;
+  const isWin = status === GAME_STATUS.WIN;
 
   return (
     <AnimatePresence>

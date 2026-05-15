@@ -1,15 +1,15 @@
-import { useEffect } from "react";
+import { useEffectEvent } from "react";
 import { useGameStore } from "../store/useGameStore";
 
 export const useAudioInit = () => {
   const initAudio = useGameStore((state) => state.initAudio);
 
-  useEffect(() => {
+  useEffectEvent(() => {
     const handleInteraction = () => {
       try {
         initAudio();
       } catch (error) {
-        console.error("Ошибка при инициализации аудио:", error);
+        console.error("Error during audio initialization:", error);
       } finally {
         window.removeEventListener("click", handleInteraction);
         window.removeEventListener("keydown", handleInteraction);
@@ -26,5 +26,5 @@ export const useAudioInit = () => {
       window.removeEventListener("keydown", handleInteraction);
       window.removeEventListener("touchstart", handleInteraction);
     };
-  }, [initAudio]);
+  });
 };

@@ -1,5 +1,4 @@
 import React from "react";
-// import classNames from "classnames";
 import { SpinButton } from "../SpinButton/SpinButton";
 import { BalanceBoard } from "../BalanceBoard/BalanceBoard";
 import "./Footer.css";

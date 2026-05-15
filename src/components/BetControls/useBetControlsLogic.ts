@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { useGameStore } from "../../store/useGameStore";
-import { MIN_BET, MAX_BET, BET_STEP } from "../../constants/gameConstants";
+import { MIN_BET, MAX_BET, BET_STEP, GAME_STATUS } from "../../constants/gameConstants";
 
 export const useBetLogic = () => {
   const { betAmount, setBetAmount, incrementBet, decrementBet, status } =
@@ -18,7 +18,7 @@ export const useBetLogic = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(String(betAmount));
 
-  const isControlsDisabled = status !== "idle";
+  const isControlsDisabled = status !== GAME_STATUS.IDLE;
 
   const handleStartEdit = () => {
     if (isControlsDisabled) return;

@@ -6,6 +6,7 @@ export interface SlotSymbol {
   icon: string;
   multiplier: number;
   weight: number;
+  uid?: string;
 }
 
 export interface GameState {

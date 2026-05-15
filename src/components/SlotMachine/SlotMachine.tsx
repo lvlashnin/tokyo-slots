@@ -49,10 +49,10 @@ export const SlotMachine: React.FC = () => {
       const tl = gsap.timeline();
 
       tl.to(leverRef.current, {
-        rotationX: 60,
+        rotationX: 100,
         y: 25,
-        z: 10,
-        duration: 0.2,
+        z: 20,
+        duration: 0.8,
         ease: "power2.in",
       }).to(leverRef.current, {
         rotationX: 0,
@@ -70,7 +70,7 @@ export const SlotMachine: React.FC = () => {
         <div className="reels-container">
           {reels.map((targetSymbol, index) => (
             <Reel
-              key={index}
+              key={targetSymbol.uid}
               index={index}
               targetSymbol={targetSymbol}
               isSpinning={isSpinning}
